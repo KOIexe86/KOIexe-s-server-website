@@ -1,0 +1,966 @@
+
+/*  Font: Space Grotesk
+    Source: Google Fonts (https://fonts.google.com/specimen/Space+Grotesk) */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+/*  Pack Icon: Flaticon Brands
+    Source: Flaticon (https://www.flaticon.com/uicons/interface-icons) */
+@import url('https://cdn-uicons.flaticon.com/3.0.0/uicons-brands/css/uicons-brands.css');
+
+/*  Pack Icon: Flaticon Regular Straight
+    Source: Flaticon (https://www.flaticon.com/uicons/interface-icons) */
+@import url('https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-straight/css/uicons-regular-straight.css');
+
+
+/* ---------------------------------------------------------------
+                            Colors
+--------------------------------------------------------------- */
+
+:root {
+  --Text: #CCCCCC;
+
+  --Background: #0C0C0C;
+  --Background-2: #161616;
+
+  --Border: #242424;
+  
+  --Primary: #aa0200;
+  --Secondary: #520100;
+
+  --Title-font: 'Grifter';
+  --Text-font: "Space Grotesk", sans-serif;
+
+  --Max-with: 1250px;
+}
+
+/* -----------------
+        Sizes
+----------------- */
+
+@media (max-width: 1500px) {
+  :root {
+    --Max-with: 1000px;
+  }
+}
+
+@media (max-width: 1100px) {
+  :root {
+    --Max-with: 800px;
+  }
+}
+
+@media (max-width: 950px) {
+  :root {
+    --Max-with: 100%;
+  }
+}
+
+/* ---------------------------------------------------------------
+                             Font
+--------------------------------------------------------------- */
+
+/* Font: Grifter
+   Source: https://pixelsurplus.com/collections/free-fonts/products/grifter-bold-free-strong-sans-serif */
+@font-face {
+    font-family: Grifter;
+    src: url(../fonts/GRIFTER-Bold.otf) format('truetype');
+}
+
+
+/* ---------------------------------------------------------------
+                          General utilities
+--------------------------------------------------------------- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+
+  /* Define the sizes */
+  --dot-size: 2px;
+  --cross-size: 2px;
+  --pattern-size: 30px;
+
+  background-color: var(--Background);
+  background-image:
+    /* Dots */
+    radial-gradient(var(--Background-2) var(--dot-size), transparent var(--dot-size)),
+    /* Vertical line of cross */
+    linear-gradient(var(--Background) var(--cross-size), transparent var(--cross-size)),
+    /* Horizontal line of cross */
+    linear-gradient(90deg, var(--Background) var(--cross-size), transparent var(--cross-size));
+
+  background-size: var(--pattern-size) var(--pattern-size);
+  background-position:
+    0 0,
+    calc(var(--pattern-size) / 2) 0,
+    0 calc(var(--pattern-size) / 2);
+  background-repeat: repeat;
+
+  color: var(--Text);
+  font-family: var(--Text-font);
+  margin: 0px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--Title-font);
+  margin: 0px;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+a {
+  color: var(--Text);
+  text-decoration: none;
+}
+
+.Section-separator {
+  width: 100%;
+  height: 2px;
+  margin: 50px auto;
+}
+
+.Page-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: var(--Max-with);
+  margin: 0px auto;
+
+  border-left: var(--Border) 2px solid;
+  border-right: var(--Border) 2px solid;
+
+  background-color: var(--Background);
+}
+
+@media (max-width: 950px) {
+  .Page-content {
+    border: none;
+  }
+}
+
+/* ---------------------------------------------------------------
+                             Header
+--------------------------------------------------------------- */
+
+header {
+  z-index: 100;
+  position: sticky;
+  width: 100%;
+  height: 64px;
+  top: 0;
+  background-color: var(--Background);
+  border-bottom: var(--Border) 2px solid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px 0px 5px 0px;
+  flex-direction: row;
+}
+
+.Header-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: 45px;
+  font-size: 1rem;
+  gap: 10px;
+}
+
+
+.Header-title h1 {
+  margin: 0px;
+}
+
+nav {
+  display: flex;
+  margin-right: 45px;
+  gap: 35px;
+}
+
+nav a {
+  position: relative;
+  padding: 5px;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--Primary);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+nav a:hover::after {
+  transform: scaleX(1);
+}
+
+@media (max-width: 1050px) {
+  header {
+    justify-content: center;
+  }
+
+  nav {
+    margin-right: 0px;
+  }
+
+  .Header-title {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  nav {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .Header-title {
+    display: flex;
+    margin-left: 0px;
+  }
+
+  nav {
+    display: none;
+  }
+}
+
+
+/* ---------------------------------------------------------------
+                             Hero
+--------------------------------------------------------------- */
+
+.Hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--Background);
+  /* Créer un motif de lignes diagonales à 45deg */
+  background-image: repeating-linear-gradient(45deg, var(--Background-2) 0 2px, transparent 2px 30px);
+
+  border-bottom: var(--Border) 2px solid;
+}
+
+.Hero-content {
+  background-image: radial-gradient(ellipse at bottom right, var(--Secondary), var(--Background) 75%);
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 50px;
+  height: 50vh;
+  width: calc(var(--Max-with) - 50px);
+  border: var(--Border) 2px solid;
+  border-bottom: none;
+  border-top: none;
+}
+
+@media (max-width: 950px) {
+  .Hero {
+    border: var(--Border) 2px solid;
+    border-top: none;
+  }
+
+  .Hero-content {
+    border: none;
+  }
+}
+
+.Hero-content h1 {
+  font-size: 5rem;
+  margin: 0px;
+}
+
+.Hero-title {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* ---------------------------------------------------------------
+                          The story
+--------------------------------------------------------------- */
+
+.Story {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--Background);
+}
+
+.Story-grid {
+  display: grid;
+  height: 400px;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  border: var(--Border) 2px solid;
+}
+
+@media (max-width: 950px) {
+  .Story-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: fit-content;
+    border-right: none;
+  }
+
+  .Story-grid-left {
+    border-right: none;
+    border-bottom: var(--Border) 2px solid;
+  }
+}
+
+.Story-grid-left {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border-right: var(--Border) 2px solid;
+}
+
+@media (max-width: 950px) {
+  .Story-grid-left {
+    border: none;
+    border-bottom: var(--Border) 2px solid;
+  }
+}
+
+.Story-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-align: Left;
+  font-size: 2rem;
+  width: calc(100% - 40px);
+}
+
+.Story-title h2 {
+  margin: 0px;
+}
+
+.Story-content {
+  padding: 0px 20px;
+}
+
+.Story-image {
+  width: 100%;
+  height: 100%;
+  background-image: url(../images/server.jpg);
+  /* Image temporaire, elle va changer */
+  background-size: cover;
+  background-position: center;
+}
+
+.Story-image img {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+
+/* ---------------------------------------------------------------
+                          Specifications
+--------------------------------------------------------------- */
+
+.Specifications {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--Background);
+}
+
+.Specifications-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-align: Left;
+  font-size: 2rem;
+  width: calc(100% - 40px);
+  border: var(--Border) 2px solid;
+  border-bottom: none;
+  padding: 20px;
+}
+
+.Specifications-title h2 {
+  margin: 0px;
+}
+
+.Specifications-grid {
+  display: grid;
+  background-color: var(--Border);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  width: 100%;
+  border: var(--Border) 2px solid;
+}
+
+@media (max-width: 950px) {
+  .Specifications-title {
+    border-left: none;
+    border-right: none;
+  }
+
+  .Specifications-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    border-left: none;
+    border-right: none;
+  }
+}
+
+.Specifications-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--Background);
+}
+
+.Specifications-item-title {
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  padding: 10px 20px;
+  width: calc(100% - 40px);
+  border-bottom: var(--Border) 2px solid;
+  font-size: 1.5rem;
+}
+
+.Specifications-item-title h3 {
+  margin: 0px;
+}
+
+.Specifications-item-desciption {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 120px;
+}
+
+.Specifications-item-desciption p {
+  margin: 2px;
+  text-align: center;
+}
+
+
+/* ---------------------------------------------------------------
+                          Applications
+--------------------------------------------------------------- */
+
+.Applications {
+  font-size: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--Background);
+  border: var(--Border) 2px solid;
+}
+
+@media (max-width: 950px) {
+  .Applications {
+    border-left: none;
+    border-right: none;
+  }
+}
+
+.Applications-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  width: calc(100% - 40px);
+  border-bottom: var(--Border) 2px solid;
+  padding: 20px;
+}
+
+.Applications-grid-container {
+  width: 100%;
+}
+
+.Applications-grid-description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - 80px);
+  padding: 40px;
+  border-bottom: var(--Border) 2px solid;
+  border-bottom: none;
+} 
+
+.Applications-grid-description p {
+  margin: 0px;
+  text-align: center;
+  font-size: 28px;
+}
+
+.Applications-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: var(--Border) 2px solid;
+  background-color: var(--Border);
+  gap: 2px;
+  width: 100%;
+  overflow-x: auto;
+}
+
+@media (max-width: 700px) {
+  .Applications-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+}
+
+.Applications-grid-item {
+  background-color: var(--Background);
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.Applications-grid-item p {
+  font-size: 16px;
+  margin: 0px;
+  margin-top: 5px;
+  text-align: center;
+}
+
+
+/* ---------------------------------------------------------------
+                            Health
+--------------------------------------------------------------- */
+
+.Health {
+  font-size: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--Background);
+  border: var(--Border) 2px solid;
+}
+
+@media (max-width: 950px) {
+  .Health {
+    border-left: none;
+    border-right: none;
+  }
+}
+
+.Health-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  width: calc(100% - 40px);
+  padding: 20px;
+}
+
+.Health-description {
+  display: flex;
+  width: calc(100% - 40px);
+  padding: 20px;
+  padding-top: 0px;
+  border-bottom: var(--Border) 2px solid;
+}
+
+.Health-description p {
+  margin: 0px;
+  font-size: 28px;
+}
+
+.Health-monitor-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+
+/* -----------------
+      Monitor
+----------------- */
+
+.Health-monitor-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  width: 100%;
+}
+
+.Health-monitor-card {
+  padding: 20px;
+  border: var(--Border) 1px solid;
+}
+
+.Health-monitor-text-container {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Health-monitor-text-container-left {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.Health-monitor-text-container-right {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  justify-content: center;
+}
+
+.Health-monitor-label { 
+  font-size: 1.17em; 
+  font-family: var(--Title-font);
+  text-transform: uppercase; 
+  margin-bottom: 10px;
+  width: fit-content;
+}
+.Health-monitor-value { 
+  font-size: 1.17em; 
+  font-family: var(--Title-font);
+  text-align: right; 
+  width: fit-content;
+}
+.Health-monitor-sub   { 
+  font-size: 0.7em; 
+}
+
+.Health-monitor-label i {
+  font-size: 0.7em;
+}
+
+.Health-monitor-bar {
+  height: 4px;
+  background: var(--Background-2);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.Health-monitor-fill {
+  height: 100%;
+  background: #618953;
+  border-radius: 99px;
+  width: 0%;
+  transition: width 0.6s ease;
+}
+
+.Health-monitor-fill.warn  { background: #E0CC56; }
+.Health-monitor-fill.crit  { background: #aa0200; }
+
+.Health-monitor-has-no-sub {
+  padding-bottom: 10px;
+}
+
+
+/* ---------------------------------------------------------------
+                            Contact
+--------------------------------------------------------------- */
+
+.Contact {
+  border-top: var(--Border) 2px solid;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--Background);
+  width: 100%;
+}
+
+.Contact-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  width: calc(100% - 40px);
+  padding: 20px;
+}
+
+.Contact-description {
+  display: flex;
+  width: calc(100% - 40px);
+  padding: 20px;
+  padding-top: 0px;
+  border-bottom: var(--Border) 2px solid;
+}
+
+.Contact-description p {
+  margin: 0px;
+  font-size: 28px;
+}
+
+.Contact-form-container {
+  width: 100%;
+}
+
+form {
+  display: grid;
+  height: calc(50vh + 3*75px);
+  width: 100%;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+
+  background-image: repeating-linear-gradient(45deg, var(--Background-2) 0 2px, transparent 2px 30px);
+
+  border-bottom: var(--Border) 2px solid ;
+}
+
+.Contact-input-name { grid-area: 1 / 1 / 2 / 3; }
+.Contact-input-email { grid-area: 1 / 3 / 2 / 5; }
+.Contact-input-message { grid-area: 2 / 1 / 4 / 5; }
+.Contact-button { grid-area: 4 / 2 / 5 / 4; }
+
+.Contact-input-container {
+  background-color: var(--Background);
+  border: var(--Border) 1px solid;
+  color: var(--Text);
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Contact-input-label {
+  border-bottom: var(--Border) 2px solid;
+  font-family: var(--Title-font);
+  font-size: 1.75em;
+  text-align: center;
+  min-height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.Contact-input {
+  background-color: var(--Background);
+  border: none;
+  color: var(--Text);
+  padding: 40px;
+  font-size: 16px;
+  resize: none;
+  width: calc(100% - 80px);
+  height: calc(100% - 80px);
+}
+
+.Contact-input:focus-visible {
+  outline: none;
+}
+
+.Contact-input-message {
+  border-bottom: var(--Border) 2px solid;
+}
+
+.Contact-button {
+  border: var(--Border) 2px solid;
+  font-family: var(--Title-font);
+  font-size: 1.5em;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+
+/* ---------------------------------------------------------------
+                             Footer
+--------------------------------------------------------------- */
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--Background);
+  background-image: repeating-linear-gradient(45deg, var(--Background-2) 0 2px, transparent 2px 30px);
+  border-top: var(--Border) 2px solid;
+  width: 100%;
+  height: fit-content;
+}
+
+.Footer-content {
+  background-color: var(--Background);
+  border: var(--Border) 2px solid;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  width: calc(var(--Max-with) - 300px);
+  height: 100%;
+  padding: 50px 150px 0px 150px;
+}
+
+@media (max-width: 950px) {
+  .Footer-content {
+    border-left: none;
+    border-right: none;
+    padding: 50px 20px 0px 20px;
+    width: calc(100% - 40px);
+  }
+}
+
+@media (max-width: 700px) {
+  .Footer-content {
+    padding: 50px 5px 0px 5px;
+    width: calc(100% - 10px);
+  }
+}
+
+.Footer-copyright {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 80px;
+}
+
+.Footer-copyright p {
+  text-align: center;
+  margin: 10px;
+  font-size: 16px;
+}
+
+.Footer-right { grid-area: 1 / 2 / 2 / 3; }
+.Footer-left { grid-area: 1 / 1 / 2 / 2; }
+.Footer-copyright { grid-area: 2 / 1 / 3 / 3; }
+
+.Footer-separation {
+  width: 200px;
+  height: 2px;
+  background-color: var(--Border);
+}
+
+/* -----------------
+        Left
+----------------- */
+
+.Footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: fit-content;
+}
+
+/* -----------------
+        Right
+----------------- */
+
+.Footer-right {
+  text-align: right;
+  align-items: end;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: fit-content;
+  justify-self: end;
+}
+
+/* -----------------
+       Links
+----------------- */
+
+footer a {
+  width: fit-content;
+  position: relative;
+  padding: 5px;
+}
+
+footer a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--Primary);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+footer a:hover::after {
+  transform: scaleX(1);
+}
+
+
+
+/* ---------------------------------------------------------------
+                          General utilities
+--------------------------------------------------------------- */
+
+/* -----------------
+       Borders
+----------------- */
+
+.rmv-bottom-border {
+  border-bottom: none;
+}
+
+.rmv-left-border {
+  border-left: none;
+}
+
+.rmv-right-border {
+  border-right: none;
+}
+
+.rmv-top-border {
+  border-top: none;
+}
+
+.rmv-all-borders {
+  border: none;
+}
+
+/* -----------------
+      Colors
+----------------- */
+
+.force-red { color: var(--Primary); }
+
+.force-green-bg { background: #618953; }
