@@ -4,8 +4,8 @@
 //                 Proxmox Health Monitor    
 // -------------------------------------------------------
 
-// Url du proxy NodeJS (a mettre en localhost:5001 une fois sur le serveur)
-const PROXY_URL = "http://192.168.1.54:5001/api/proxmox-stats";
+// Url du proxy NodeJS (a mettre en /api/proxmox-stats une fois sur le serveur)
+const PROXY_URL = "/api/proxmox-stats";
 
 // Formatage des données de stockage
 function formatBytes(bytes) {
