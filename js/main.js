@@ -29,6 +29,10 @@ function setBar(id, percent) {
   el.style.width = percent + "%";
   el.className = "Health-monitor-fill" +
     (percent > 90 ? " crit" : percent > 70 ? " warn" : "");
+  
+  if (id == "uptime-bar") {
+    el.className = "Health-monitor-fill ok"
+  }
 }
 
 // Fonction pour récupérer les stats depuis le proxy NodeJS
