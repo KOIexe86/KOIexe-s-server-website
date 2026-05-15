@@ -32,22 +32,28 @@
             <div class="Hero-content">
                 <div class="Hero-title">
                     <h1>KOIexe's</h1>
-                    <h1>Server</h1>
+                    <h1 class="Hero-title-h1-bottom">Server</h1>
+
+                    <div class="Hero-description">
+                        <p>A HomeLab built and maintained by KOIexe</p>
+                    </div>
                 </div>
 
-                <p>A HomeLab built and maintained by KOIexe</p>
+                <div class="Hero-image">
+                    <img src="/images/hero-image.png" width="1296px" height="auto">
+                </div>
             </div>
         </div>
 
         <div class="Page-content">
-        <div class="Section-separator"></div>
+        <div class="Section-separator" id="story"></div>
 
-        <div class="Story" id="story">
+        <div class="Story">
             <div class="Story-grid">
                 <div class="Story-grid-left">
                     <div class="Story-title">
                         <h2>The story</h2>
-                        <i class="fi fi-rs-quill-pen-story force-red"></i>
+                        <i class="fi fi-rs-quill-pen-story icon"></i>
                     </div>
                     <div class="Story-content">
                         <p>
@@ -60,7 +66,7 @@
                             At the start, used for mincraft server hosting for me and my friends, it became a multipurpose 
                             server a bit later. I started by adding storage capability then, more variaty in my services.
                             Now, it is used by me and my friends for file sharing, storage, website hosting and, 
-                            still to this day, minecraft hosting
+                            still to this day, minecraft hosting.
                         </p>
                     </div>
                 </div>
@@ -70,12 +76,12 @@
             </div>
         </div>
 
-        <div class="Section-separator"></div>
+        <div class="Section-separator" id="specifications"></div>
 
-        <div class="Specifications" id="specifications">
-            <div class="Specifications-title">
+        <div class="Specifications">
+            <div class="Specifications-title title">
                 <h2>Specifications</h2>
-                <i class="fi fi-rs-document force-red"></i>
+                <i class="fi fi-rs-document icon"></i>
             </div>
 
             <div class="Specifications-grid">
@@ -143,12 +149,12 @@
             </div>
         </div>
 
-        <div class="Section-separator"></div>
+        <div class="Section-separator" id="applications"></div>
 
-        <div class="Applications" id="applications">
-            <div class="Applications-title">
+        <div class="Applications">
+            <div class="Applications-title title">
                 <h2>Applications</h2>
-                <i class="fi fi-rs-apps force-red"></i>
+                <i class="fi fi-rs-apps icon"></i>
             </div>
 
             <div class="Applications-grid-container">
@@ -159,7 +165,7 @@
                 </div>
                 
                 <div class="Applications-grid">
-                    <div class="Applications-grid-item rmv-left-border">
+                    <div class="Applications-grid-item">
                         <img src="images/applications/openmediavault.svg" alt="OpenMediaVault" width="75" height="75">
                         <p>OpenMediaVault</p>
                     </div>
@@ -171,23 +177,23 @@
                         <img src="images/applications/pihole.svg" alt="piHole" width="75" height="75">
                         <p>piHole</p>
                     </div>
-                    <div class="Applications-grid-item rmv-right-border">
+                    <div class="Applications-grid-item">
                         <img src="images/applications/craftycontroller.svg" alt="CraftyController" width="75" height="75">
                         <p>CraftyController</p>
                     </div>
-                    <div class="Applications-grid-item rmv-left-border rmv-bottom-border">
+                    <div class="Applications-grid-item">
                         <img src="images/applications/cloudflared.svg" alt="Cloudflared" width="75" height="75">
                         <p>Cloudflared</p>
                     </div>
-                    <div class="Applications-grid-item rmv-bottom-border">
+                    <div class="Applications-grid-item">
                         <img src="images/applications/nginx.svg" alt="Nginx" width="75" height="75">
                         <p>Nginx</p>
                     </div>
-                    <div class="Applications-grid-item rmv-bottom-border">
+                    <div class="Applications-grid-item">
                         <img src="images/applications/homarr.svg" alt="Homarr" width="75" height="75">
                         <p>Homarr</p>
                     </div>
-                    <div class="Applications-grid-item rmv-bottom-border rmv-right-border">
+                    <div class="Applications-grid-item">
                         <img src="images/applications/chevereto.svg" alt="Chevereto" width="75" height="75">
                         <p>Chevereto</p>
                     </div>
@@ -195,12 +201,12 @@
             </div>
         </div>
 
-        <div class="Section-separator"></div>
+        <div class="Section-separator" id="health"></div>
 
-        <div class="Health" id="health">
-            <div class="Health-title">
+        <div class="Health">
+            <div class="Health-title title">
                 <h2>Health</h2>
-                <i class="fi fi-rs-heart-rate force-red"></i>
+                <i class="fi fi-rs-heart-rate icon"></i>
             </div>
 
             <div class="Health-description">
@@ -269,21 +275,23 @@
                                 <div class="Health-monitor-value" id="uptime-value">—</div>
                             </div>
                         </div>
-                        <div class="Health-monitor-bar force-green-bg"></div>
-                    </div>
-                </div>
 
-                <!-- Error message container (hidden by default, shown if there's an error fetching stats) -->
-                <div id="Health-monitor-error" style="display:none; color:red;"></div>
+                        <div class="Health-monitor-bar"><div class="Health-monitor-fill" id="uptime-bar"></div></div>
+
+                    </div>
+
+                    <!-- Message d'erreur (cacher par defaut, montrer si il y a une erreur lors du fetch) -->
+                    <div class="Health-monitor-error" id="Health-monitor-error" style="display:none; color:red;"></div>
+                </div>                
             </div>
         </div>
 
-        <div class="Section-separator"></div>
+        <div class="Section-separator" id="contact"></div>
 
-        <div class="Contact" id="contact">
-            <div class="Contact-title">
+        <div class="Contact">
+            <div class="Contact-title title">
                 <h2>Contact</h2>
-                <i class="fi fi-rs-envelope force-red"></i>
+                <i class="fi fi-rs-envelope icon"></i>
             </div>
 
             <div class="Contact-description">

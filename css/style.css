@@ -257,16 +257,15 @@ nav a:hover::after {
 
 .Hero-content {
   background-image: radial-gradient(ellipse at bottom right, var(--Secondary), var(--Background) 75%);
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   padding-left: 50px;
   height: 50vh;
   width: calc(var(--Max-with) - 50px);
   border: var(--Border) 2px solid;
   border-bottom: none;
   border-top: none;
+  overflow:hidden;
 }
 
 @media (max-width: 950px) {
@@ -285,11 +284,28 @@ nav a:hover::after {
   margin: 0px;
 }
 
+.Hero-title-h1-bottom {
+  translate: 0px -20px ;
+}
+
 .Hero-title {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
+.Hero-image {
+  overflow: hidden;
+  width: 1080px;
+  height: auto;
+  translate: 100px;
+}
+
+@media (max-width: 650px) {
+  .Hero-image {
+    display: none;
+  }
+}
 
 /* ---------------------------------------------------------------
                           The story
@@ -320,6 +336,8 @@ nav a:hover::after {
   }
 
   .Story-grid-left {
+    padding-top: 15px;
+    padding-bottom: 15px;
     border-right: none;
     border-bottom: var(--Border) 2px solid;
   }
@@ -691,6 +709,12 @@ nav a:hover::after {
   padding-bottom: 10px;
 }
 
+.Health-monitor-error {
+  text-align: center;
+  border-top: var(--Border) 2px solid;
+  padding: 10px 0px;
+}
+
 
 /* ---------------------------------------------------------------
                             Contact
@@ -841,6 +865,7 @@ footer {
     border-right: none;
     padding: 50px 20px 0px 20px;
     width: calc(100% - 40px);
+    border: none;
   }
 }
 
@@ -851,24 +876,20 @@ footer {
   }
 }
 
-.Footer-copyright {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin-top: 80px;
-}
-
-.Footer-copyright p {
-  text-align: center;
-  margin: 10px;
-  font-size: 16px;
-}
-
-.Footer-right { grid-area: 1 / 2 / 2 / 3; }
 .Footer-left { grid-area: 1 / 1 / 2 / 2; }
+.Footer-right { grid-area: 1 / 2 / 2 / 3; }
 .Footer-copyright { grid-area: 2 / 1 / 3 / 3; }
+
+@media (max-width: 500px) {
+  .Footer-content {
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+    text-align: center;
+  }
+  .Footer-left { grid-area: 1 / 1 / 2 / 2; }
+  .Footer-right { grid-area: 2 / 1 / 3 / 2; }
+  .Footer-copyright { grid-area: 4 / 1 / 5 / 2; }
+}
 
 .Footer-separation {
   width: 200px;
@@ -887,6 +908,15 @@ footer {
   width: fit-content;
 }
 
+@media (max-width: 500px) {
+  .Footer-left {
+    text-align: center;
+    align-items: center;
+    padding-bottom: 40px;
+    justify-self: center;
+  }
+}
+
 /* -----------------
         Right
 ----------------- */
@@ -899,6 +929,14 @@ footer {
   gap: 15px;
   width: fit-content;
   justify-self: end;
+}
+
+@media (max-width: 500px) {
+  .Footer-right {
+    justify-self: center;
+    text-align: center;
+    align-items: center;
+  }
 }
 
 /* -----------------
@@ -927,6 +965,24 @@ footer a:hover::after {
   transform: scaleX(1);
 }
 
+/* -----------------
+     Copyright
+----------------- */
+
+.Footer-copyright {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 80px;
+}
+
+.Footer-copyright p {
+  text-align: center;
+  margin: 10px;
+  font-size: 16px;
+}
 
 
 /* ---------------------------------------------------------------
@@ -961,6 +1017,16 @@ footer a:hover::after {
       Colors
 ----------------- */
 
-.force-red { color: var(--Primary); }
+.icon { color: var(--Primary); }
 
-.force-green-bg { background: #618953; }
+@media (max-width: 400px) {
+  .icon {
+    display: none;
+  }
+
+  .title {
+    text-align: center;
+    justify-content: center;
+  }
+
+}

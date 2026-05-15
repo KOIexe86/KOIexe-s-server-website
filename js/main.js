@@ -51,13 +51,13 @@ async function fetchProxmoxStats() {
     setBar("disk-bar", data.disk.percent);
 
     document.getElementById("uptime-value").textContent = formatUptime(data.uptime);
+    setBar("uptime-bar", 100);
 
     document.getElementById("Health-monitor-error").style.display = "none";
   } catch (e) {
     console.error("Erreur lors de la récupération des stats Proxmox:", e.message);
     document.getElementById("Health-monitor-error").style.display = "block";
-    document.getElementById("Health-monitor-error").textContent =
-      "Impossible de joindre le proxy : " + e.message;
+    document.getElementById("Health-monitor-error").textContent = "Unable to connect to the proxy, check the console for an error message.";
   }
 }
 
