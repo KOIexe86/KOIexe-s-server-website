@@ -73,7 +73,10 @@ const server = http.createServer(async (req, res) => {
       ]);
 
       const n = nodeStatus.data;
-      const disk = storage.data.find((s) => s.storage === "local") || storage.data[0];
+      const disk = storage.data.reduce((acc, s) => ({
+        used:  acc.used  + (s.used  || 0),
+        total: acc.total + (s.total || 0),
+      }), { used: 0, total: 0 });
 
       res.end(JSON.stringify({
         cpu: Math.round(n.cpu * 100),
